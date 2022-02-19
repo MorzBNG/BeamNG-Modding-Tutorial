@@ -1,0 +1,62 @@
+{
+"tutorial_brakes_F":{
+	"information":{
+		"authors":"MorzBNG",
+		"name":"Front Brakes",
+		"value":"200"
+	}
+	
+	"slotType":"tutorial_brakes_F",
+	
+	"slots":[
+		["type", "default", "description"],
+		["brakepad_F","brakepad_F","Front Brake Pads"],
+	],
+	"variables":[
+		["name","type","unit","category","default","min","max","title","description"],
+		["$brakebias","range","","Brakes",0.65,0,1,"Front/Rear Bias","Percent of brake torque to the front wheels"],
+	],
+	"pressureWheels":[
+		["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+		{"brakeTorque":1800},
+		{"parkingTorque":0},
+		
+		{"enableBrakeThermals":true},
+		{"brakeDiameter":0.24},
+		{"brakeMass":3.1},
+		{"brakeType":"disc"},
+		{"rotorMaterial":"steel"},
+		{"brakeVentingCoef":0.8},
+	],
+},
+
+"tutorial_brakes_R":{
+	"information":{
+		"authors":"MorzBNG",
+		"name":"Rear Brakes",
+		"value":"700"
+	}
+	
+	"slotType":"tutorial_brakes_R",
+	"slots":[
+		["type","default","description"],
+		["brakepad_R","brakepad_R","Rear Brake Pads"],
+	],
+	"variables":[
+		["name","type","unit","category","default","min","max","title","description"],
+		["$brakebias","range","","Brakes",0.65,0,1,"Front/Rear Bias","Percent of brake torque to the front wheels"],
+	],
+	"pressureWheels": [
+        ["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+		{"brakeTorque":1600},
+		{"parkingTorque":2000},
+		
+		{"enableBrakeThermals":true},
+		{"brakeDiameter":0.22},
+		{"brakeMass":2.8},
+		{"brakeType":"disc"},
+		{"rotorMaterial":"steel"},
+		{"brakeVentingCoef":0.8},
+	],
+}
+}

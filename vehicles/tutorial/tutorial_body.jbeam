@@ -1,0 +1,129 @@
+{
+"tutorial_body":{
+	
+	"information":{
+		"authors":"MorzBNG",
+		"name":"Tutorial Body",
+		"value":100
+	}
+	
+	"slotType" : "tutorial_body",
+	
+	"slots":[
+		["type","default","description"]
+		["tutorial_suspension_F","tutorial_suspension_F","Front Suspension"],
+	]
+	
+	"refNodes":[
+		["ref:", "back:", "left:", "up:"]
+		["nm", "nb", "nl", "nu"],
+	],
+	
+	"nodes": [
+		["id", "posX", "posY", "posZ"],
+		{"selfCollision":true},
+        {"collision":true},
+        {"nodeMaterial":"|NM_METAL"},
+        {"frictionCoef":0.6},
+		//RefNodes
+		{"group":"Tutorial_g"},
+		["nm", 0, 0, 0],
+		["nl", 2, 0, 0],
+		["nr", -2, 0, 0],
+		["nu", 0, 0, 2],
+		["nb", 0, 3, 0],
+		["nf", 0, -3, 0],
+		
+		["n1", -2, -3, 0],
+		["n2", 2, -3, 0],
+		["n3", -2, 3, 0],
+		["n4", 2, 3, 0],
+		["n5", -2, -3, 2],
+		["n6", 2, -3, 2],
+		["n7", -2, 3, 2],
+		["n8", 2, 3, 2],
+		
+		["n21", 2, -2.8, 0],
+		["n11", -2, -2.8, 0],
+		{"group":""},
+		
+	],
+	
+	"beams": [
+		["id1:", "id2:"],
+		
+		{"beamSpring":8000000,"beamDamp":125},
+		{"beamDeform":10000,"beamStrenght":20000},
+		
+		["nm","nu"],
+		
+		["nu","n5"],
+		["nu","n6"],
+		["nu","n7"],
+		["nu","n8"],
+		
+		["n5","n6"],
+		["n6","n8"],
+		["n7","n8"],
+		["n7","n5"],
+		
+		["nf","n1"],
+		["n1","nr"],
+		["nr","n3"],
+		["n3","nb"],
+		["nb","n4"],
+		["n4","nl"],
+		["nl","n21"],
+		["n2","n21"],
+		["n1","n11"],
+		["n2","nf"],
+		
+		["nm","nf"],
+		["nm","nb"],
+		["nm","nr"],
+		["nm","nl"],
+		
+		["n1","n5"],
+		["n2","n6"],
+		["n21","n6"],
+		["n21","nf"],
+		["n21","nu"],
+		["n11","n5"],
+		["n11","nr"],
+		["n11","nu"],
+		["n3","n7"],
+		["n4","n8"],
+		["n1","n6"],
+		["n2","n5"],
+		["nf","n6"],
+		["nf","n5"],
+		["n4","n7"],
+		["n3","n8"],
+		["nb","n7"],
+		["nb","n8"],
+		["nl","n6"],
+		["nl","n8"],
+		["nr","n7"],
+		["nr","n5"],
+		["nu","nl"],
+		["nu","nr"],
+		
+		["nf","n8"],
+		["nf","n7"],
+		["nb","n5"],
+		["nb","n6"],
+	],
+
+	"flexbodies":[
+		["mesh", "[group]:", "nonFlexMaterials"],
+		["Cube", ["Tutorial_g"]]
+	
+	],
+	
+	"triangles":[
+		["id1:", "id2:", "id3:"],
+		{"dragCoef": 12}
+		["n1", "nm", "nf"],
+	],
+}
+}
