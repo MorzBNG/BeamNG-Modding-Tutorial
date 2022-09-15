@@ -11,7 +11,7 @@
 	"slots": [
         ["type", "default", "description"],
         ["tutorial_brakes_F", "tutorial_brakes_F", "Front Brakes"],
-		["wheel_F_5","ibishu_wheel_09a_17x7_F", "Front Wheels", {"nodeOffset":{"x":0.25, "y":-1.45, "z":0.34738}}],
+	["wheel_F_5","ibishu_wheel_09a_17x7_F", "Front Wheels", {"nodeOffset":{"x":0.25, "y":-1.45, "z":0.34738}}],
         ["tutorial_wheeldata_F","tutorial_wheeldata_F", "Front Spindles", {"coreSlot":true}],
     ],
 
@@ -37,7 +37,7 @@
 		["fh3l", 0.62, -1.62, 0.24],
 		["fh3r", -0.62, -1.62, 0.24],
 
-		["fh4l", 0.61, -1.5, 0.61],
+		["fh4l", 0.61, -1.5, 0.61], //ah yes negative caster
 		["fh4r", -0.61, -1.5, 0.61],
 
 		{"nodeWeight":6.0},
