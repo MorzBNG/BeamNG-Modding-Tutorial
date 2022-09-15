@@ -1,59 +1,87 @@
 {
-"tutorial_body":{
-	
-	"information":{
-		"authors":"MorzBNG",
-		"name":"Tutorial Body",
+"tutorial_body": {
+    "information":{
+        "authors":"MorzBNG",
+        "name":"Body",
 		"value":100
-	}
-	
+    },
+    
 	"slotType" : "tutorial_body",
-	
-	"slots":[
-		["type","default","description"]
-		["tutorial_suspension_F","tutorial_suspension_F","Front Suspension"],
-	]
-	
-	"refNodes":[
-		["ref:", "back:", "left:", "up:"]
-		["nm", "nb", "nl", "nu"],
+    
+	"slots": [
+        ["type", "default", "description"],
+		["tutorial_engine","tutorial_engine_I6_3.2l", "Engine"],
+		["tutorial_suspension_F","tutorial_suspension_F", "Front Suspension"],
+        ["tutorial_suspension_R","tutorial_suspension_R", "Rear Suspension"],
+		["tutorial_fueltank", "tutorial_fueltank", "Fuel Tank"],
 	],
 	
-	"nodes": [
-		["id", "posX", "posY", "posZ"],
-		{"selfCollision":true},
-        {"collision":true},
+    "refNodes":[
+        ["ref:", "back:", "left:", "up:"],
+        ["nm", "nb", "nl", "nu"],
+    ],
+	
+    "cameraChase":{
+       "distance":4.9,
+       "distanceMin":2,
+        "defaultRotation":{"x":0,"y":-10,"z":0},
+       "offset":{"x":0, "y":0.10, "z":1},
+       "fov":65,
+    },
+    "cameraExternal":{
+       "distance":4.9,
+       "distanceMin":2,
+       "offset":{"x":0, "y":0.10, "z":0.36},
+       "fov":65,
+    },
+	
+	"flexbodies":[
+        ["mesh", "[group]:", "nonFlexMaterials"],
+        ["tutorial_body", ["tutorial_body"]],
+    ],
+	
+    "nodes":[
+        ["id", "posX", "posY", "posZ"],
+        {"frictionCoef":0.7},
         {"nodeMaterial":"|NM_METAL"},
-        {"frictionCoef":0.6},
+        {"collision":true},
+        {"group":"tutorial_body"},
+		{"nodeWeight":26},
+		
 		//RefNodes
-		{"group":"Tutorial_g"},
-		["nm", 0, 0, 0],
-		["nl", 2, 0, 0],
-		["nr", -2, 0, 0],
-		["nu", 0, 0, 2],
-		["nb", 0, 3, 0],
-		["nf", 0, -3, 0],
+		["nm", 0, 0, 0.3],
+		["nl", 0.845, 0, 0.3],
+		["nr", -0.845, 0, 0.3],
+		["nu", 0, 0, 1.525],
+		["nb", 0, 1.47, 0.4],
+		["nf", 0, -1.9, 0.3],
 		
-		["n1", -2, -3, 0],
-		["n2", 2, -3, 0],
-		["n3", -2, 3, 0],
-		["n4", 2, 3, 0],
-		["n5", -2, -3, 2],
-		["n6", 2, -3, 2],
-		["n7", -2, 3, 2],
-		["n8", 2, 3, 2],
+		["n1", -0.845, -1.9, 0.3],
+		["n2", 0.845, -1.9, 0.3],
+		["n3", -0.6, 1.47, 0.3],
+		["n4", 0.6, 1.47, 0.3],
+		["n5", -0.58, -1.55, 0.93],
+		["n6", 0.58, -1.55, 0.93],
+		["n7", -0.5, 1.32, 1.4],
+		["n8", 0.5, 1.32, 1.4],
 		
-		["n21", 2, -2.8, 0],
-		["n11", -2, -2.8, 0],
-		{"group":""},
+		["n21", 0.845, -1.7, 0.3],
+		["n11", -0.845, -1.7, 0.3],
+		{"group":""}
 		
-	],
-	
-	"beams": [
-		["id1:", "id2:"],
-		
-		{"beamSpring":8000000,"beamDamp":125},
-		{"beamDeform":10000,"beamStrenght":20000},
+		{"collision":false},
+		["e1x", 0.3, -1.68, 0.3],
+		["e2x", -0.3, -1.68, 0.3],
+		{"collision":true},
+    ],
+    "beams":[
+        ["id1:", "id2:"],
+        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+        {"beamSpring":720000,"beamDamp":167},
+        {"beamDeform":10000,"beamStrength":1000069},
+        {"disableMeshBreaking":true,"disableTriangleBreaking":true},
+        
+        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0}
 		
 		["nm","nu"],
 		
@@ -82,6 +110,10 @@
 		["nm","nb"],
 		["nm","nr"],
 		["nm","nl"],
+		["nm","n1"],
+		["nm","n2"],
+		["nm","n3"],
+		["nm","n4"],
 		
 		["n1","n5"],
 		["n2","n6"],
@@ -112,18 +144,28 @@
 		["nf","n7"],
 		["nb","n5"],
 		["nb","n6"],
-	],
-
-	"flexbodies":[
-		["mesh", "[group]:", "nonFlexMaterials"],
-		["Cube", ["Tutorial_g"]]
-	
-	],
-	
-	"triangles":[
-		["id1:", "id2:", "id3:"],
-		{"dragCoef": 12}
-		["n1", "nm", "nf"],
+		
+		{"beamSpring":1600000,"beamDamp":100},
+        {"beamDeform":30000,"beamStrength":1000000},
+		["e1x", "nf"],
+		["e1x", "n2"],
+		["e1x", "n21"],
+		["e1x", "n1"],
+		["e1x", "n11"],
+		["e1x", "nu"],
+		["e1x", "nm"],
+		["e1x", "n5"],
+		["e1x", "n6"],
+		
+		["e2x", "nf"],
+		["e2x", "n2"],
+		["e2x", "n21"],
+		["e2x", "n1"],
+		["e2x", "n11"],
+		["e2x", "nu"],
+		["e2x", "nm"],
+		["e2x", "n5"],
+		["e2x", "n6"],
 	],
 }
 }
