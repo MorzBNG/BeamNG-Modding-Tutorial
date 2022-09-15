@@ -1,17 +1,38 @@
 {
 "tutorial": {
+    "information":{
+        "authors":"BeamNG",
+        "name":"Tutorial"
+    },
+    "slotType" : "main",
 
-	"information":{
-		"authors":"MorzBNG",
-		"name":"Tutorial"
-	}
+    "slots": [
+        ["type", "default", "description"],
+		["tutorial_body","tutorial_body", "Body"],
+    ],
 	
-	"slotType" : "main",
+	"controller":[
+		["fileName"]
+		["vehicleController", {}],
+	],
+
+	"variables":[
+		["name", "type", "unit", "category", "default", "min", "max", "title", "description"],
+		["$brakestrenght", "range", "", "Brakes", 0.9 ,0.5 , 1, "Percent of brake torque", "Scales the overall brake torque" {"minDis": 50, "maxDis": 100}],
+	],
 	
-	"slots":[
-		["type","default","description"]
-		["tutorial_body","tutorial_body","Body"],
-	]
+    "cameraChase":{
+        "distance":5.0,
+        "distanceMin":2,
+        "defaultRotation":{"x":0,"y":-12,"z":0},
+        "offset":{"x":0, "y":0, "z":1.2},
+        "fov":65
+     },
+    "cameraExternal":{
+        "distance":4,
+        "distanceMin":3,
+        "offset":{"x":0.58, "y":0.95, "z":0.5},
+        "fov":65
+    },
 }
-
 }
