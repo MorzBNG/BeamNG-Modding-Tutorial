@@ -1,12 +1,11 @@
 {
-	"Name": "Tutorial",
+	"Name":"Tutorial",
+	"Author":"MorzBNG",
+	"Type":"Vehicle",
 	"Brand": "MorzBNGs",
-	"Authors": "MorzBNG",
-	"Type": "Prop",
 	"default_pc": "default",
 	"defaul_color": "Pearl White",
 	"colors": {
 		"Pearl White": "1 1 1 1"
 	}
-
 }
