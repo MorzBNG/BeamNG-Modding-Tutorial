@@ -14,11 +14,11 @@
 	],
 	"variables":[
 		["name","type","unit","category","default","min","max","title","description"],
-		["$brakebias","range","","Brakes",0.65,0,1,"Front/Rear Bias","Percent of brake torque to the front wheels"],
+		["$brakebias","range","","Brakes",0.65,0,1,"Front/Rear Bias","Percent of brake torque to the front wheels", {"minDis": 0, "maxDis": 100}],
 	],
 	"pressureWheels":[
 		["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
-		{"brakeTorque":1800},
+		{"brakeTorque":"$=$brakestrenght * $brakebias * 1900"},
 		{"parkingTorque":0},
 		
 		{"enableBrakeThermals":true},
@@ -48,7 +48,7 @@
 	],
 	"pressureWheels": [
         ["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
-		{"brakeTorque":1600},
+		{"brakeTorque":"$=$brakebias == nil and $brakestrenght * 1700 or $brakestrenght * (1 - $brakebias) * 1700"},
 		{"parkingTorque":2000},
 		
 		{"enableBrakeThermals":true},
