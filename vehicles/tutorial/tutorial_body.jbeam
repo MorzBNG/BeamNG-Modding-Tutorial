@@ -13,7 +13,7 @@
 		["tutorial_engine","tutorial_engine_I6_3.2l", "Engine"],
 		["tutorial_suspension_F","tutorial_suspension_F", "Front Suspension"],
         ["tutorial_suspension_R","tutorial_suspension_R", "Rear Suspension"],
-		["tutorial_fueltank", "tutorial_fueltank", "Fuel Tank"],
+		["tutorial_fueltank", "tutorial_safe_fueltank", "Fuel Tank"],
 	],
 	
     "refNodes":[
