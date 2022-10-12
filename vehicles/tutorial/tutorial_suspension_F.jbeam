@@ -3,7 +3,7 @@
     "information":{
         "authors":"MorzBNG",
         "name":"Front Suspension",
-        "value":200
+        "value":400
     },
     
 	"slotType" : "tutorial_suspension_F",
@@ -11,9 +11,17 @@
 	"slots": [
         ["type", "default", "description"],
         ["tutorial_brakes_F", "tutorial_brakes_F", "Front Brakes"],
-	["wheel_F_5","ibishu_wheel_09a_17x7_F", "Front Wheels", {"nodeOffset":{"x":0.25, "y":-1.45, "z":0.34738}}],
+        ["tutorial_steering_F", "tutorial_steering_F", "Steering"],
+		["wheel_F_5","ibishu_wheel_09a_17x7_F", "Front Wheels", {"nodeOffset":{"x":0.25, "y":-1.45, "z":0.40738}}],
         ["tutorial_wheeldata_F","tutorial_wheeldata_F", "Front Spindles", {"coreSlot":true}],
     ],
+
+	"flexbodies": [
+		["mesh", "[group]:", "nonFlexMaterials"],
+		["tutorial_lowerarm_F", ["lowerarm_F"]],
+		["tutorial_hub_F", ["hub_F"]],
+		["tutorial_tierod_F", ["tierod_F"]],
+	],
 
     "nodes": [
         ["id", "posX", "posY", "posZ"],
@@ -25,38 +33,39 @@
         {"group":"tutorial_suspension_F"},
 
         {"group":["hub_F", "lowerarm_F","tierod_F"]},
-		["fh1l", 0.65, -1.45, 0.2],
-		["fh1r", -0.65, -1.45, 0.2],
+		["fh1l", 0.65, -1.45, 0.26],
+		["fh1r", -0.65, -1.45, 0.26],
 
 		{"group":["hub_F", "upperarm_F","tierod_F"]},
-		["fw2l", 0.65, -1.42, 0.25],
-		["fw2r", -0.65, -1.42, 0.25],
+		["fw2l", 0.65, -1.42, 0.31],
+		["fw2r", -0.65, -1.42, 0.31],
 
 		{"nodeWeight":5.5},
         {"group":["hub_F","tierod_F"]},
-		["fh3l", 0.62, -1.62, 0.24],
-		["fh3r", -0.62, -1.62, 0.24],
-
-		["fh4l", 0.61, -1.5, 0.61], //ah yes negative caster
-		["fh4r", -0.61, -1.5, 0.61],
+		["fh3l", 0.62, -1.6, 0.32],
+		["fh3r", -0.62, -1.6, 0.32],
+		
+		["fh4l", 0.61, -1.45, 0.61],
+		["fh4r", -0.61, -1.45, 0.61],
 
 		{"nodeWeight":6.0},
-		{"group":["hub_F","tierod_F"]},
-		["fh6l", 0.62, -1.24, 0.35],
-		["fh6r", -0.62, -1.24, 0.35],
+		{"group":"hub_F"},
+		["fh6l", 0.62, -1.24, 0.40],
+		["fh6r", -0.62, -1.24, 0.40],
 		{"group":""},
 
 		{"nodeWeight":15.0},
-		["fx1l", 0.25, -1.6, 0.26],
-		["fx2l", 0.25, -1.3, 0.26],
+		{"group": "lowerarm_F"},
+		["fx1l", 0.34, -1.6, 0.26],
+		["fx2l", 0.34, -1.3, 0.26],
 
-		["fx1r", -0.25, -1.6, 0.26],
-		["fx2r", -0.25, -1.3, 0.26],
+		["fx1r", -0.34, -1.6, 0.26],
+		["fx2r", -0.34, -1.3, 0.26],
 
         {"group":""},
 
-		["fs2l", 0.53, -1.45, 0.55],
-		["fs2r", -0.53, -1.45, 0.55],
+		["fs2l", 0.53, -1.45, 0.63],
+		["fs2r", -0.53, -1.45, 0.63],
     ],
 	
     "beams": [
@@ -143,11 +152,12 @@
 		["fh4r", "fs2r"],
 		["fs2r", "fh3r"],
 		["fs2r", "fh6r"],
-
+		
 		//springs & dampers
-		{"beamSpring":30000,"beamDamp":4000},
+		{"beamSpring":40000,"beamDamp":4400},
 		["n6","fh4l"],
 		["n5","fh4r"],
+
 
 		//front limiters
         {"deformLimitExpansion":""},
@@ -159,6 +169,8 @@
 		["fh3r","n11"],
         ["fh3l","n21"],
 
+		
+
 		//steering limiter
 		{"beamPrecompression":1, "beamType":"|SUPPORT", "beamLongBound":4},
         {"beamSpring":2501000,"beamDamp":150,"beamDeform":100000,"beamStrength":600000},
@@ -169,7 +181,6 @@
         ["fh6r","fx1r"],
         ["fh6l","fx1l"],
         {"beamPrecompression":1},
-
 
 		{"optional":true},
         {"beamDeform":70000,"beamStrength":195000},
@@ -207,20 +218,19 @@
 		["id1:","id2:"],
 		{"beamPrecompression":1.0, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
 		{"beamSpring":14001000, "beamDamp":500,"beamDeform":50400,"beamStrength":98000},
-		["e1x","fh3l",{"factor":-0.165,"steeringWheelLock":460,"lockDegrees":30}],
-		["e2x","fh3r",{"factor":0.165,"steeringWheelLock":460,"lockDegrees":30}], 
+		["e1x","fhSRl",{"factor":-0.7,"steeringWheelLock":460,"lockDegrees":30}],
+		["e2x","fhSRr",{"factor":0.7,"steeringWheelLock":460,"lockDegrees":30}], 
 		{"beamPrecompression":1.0, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1}
     ],
-	
-	
-	//keep spring on strut
+
 	"slidenodes": [ 
 		["id:", "railName", "attached", "fixToRail", "tolerance", "spring", "strength", "capStrength"],
 		["fh4l", "AlignementL", true, true, 0, 10000000, 100000000, 345435],
 		["fh4r", "AlignementR", true, true, 0, 10000000, 100000000, 345435],
 	],
-	
+
 	"rails": {
+		"steeringrack":{"links:":["fhSRr", "fhSRl"], "broken:":[], "looped":false, "capped":true},
 		"AlignementL":{"links:":["fh1l", "n6"], "looped":false, "capped":true}
 		"AlignementR":{"links:":["fh1r", "n5"], "looped":false, "capped":true}
 	},
@@ -242,12 +252,12 @@
         {"hubcapBreakGroup":"hubcap_FR"},
         {"hubcapGroup":"hubcap_FR"},
         {"axleBeams":["axle_FR"]},
-        ["FR", "wheel_FR", "tire_FR", "fw1rr", "fw1r", 9999, "fh6r", 1,{"speedo":true, "torqueCoupling:":"fh3r","torqueArm:":"fh6l","torqueArm2:":"fw1rr","steerAxisUp:":"fh4r","steerAxisDown:":"fh1l"}],
-		
+        ["FR", "wheel_FR", "tire_FR", "fw1rr", "fw1r", 9999, "fh1r", 1,{"speedo":true, "torqueCoupling:":"fh3r","torqueArm:":"fh6l","torqueArm2:":"fw1rr","steerAxisUp:":"fh4r","steerAxisDown:":"fh1l"}],
+
 		{"hubcapBreakGroup":"hubcap_FL"},
         {"hubcapGroup":"hubcap_FL"},
         {"axleBeams":["axle_FL"]},
-        ["FL", "wheel_FL", "tire_FL", "fw1ll", "fw1l", 9999, "fh6l", -1,{"torqueCoupling:":"fh3l","torqueArm:":"fh6l","torqueArm2:":"fw1ll","steerAxisUp:":"fh4l","steerAxisDown:":"fh1l"}],
+        ["FL", "wheel_FL", "tire_FL", "fw1ll", "fw1l", 9999, "fh1l", -1,{"torqueCoupling:":"fh3l","torqueArm:":"fh6l","torqueArm2:":"fw1ll","steerAxisUp:":"fh4l","steerAxisDown:":"fh1l"}],
 
 		{"selfCollision":true},
         {"axleBeams":[]},{"disableMeshBreaking":false,"disableTriangleBreaking":false},
@@ -260,5 +270,51 @@
         ["shaft", "spindleFL", "wheelaxleFL", 1, {"connectedWheel":"FL", "breakTriggerBeam":"axle_FL", "uiName":"Front Left Axle", "friction":2}],
         ["shaft", "spindleFR", "wheelaxleFR", 1, {"connectedWheel":"FR", "breakTriggerBeam":"axle_FR", "uiName":"Front Right Axle", "friction":2}]
     ]
+},
+
+"tutorial_steering_F": {
+	"information":{
+        "authors":"MorzBNG",
+        "name":"Steering Rack",
+        "value":200
+    },
+	
+	"slotType": "tutorial_steering_F",
+	
+	"nodes":[
+		{"nodeMaterial":"|NM_METAL"},
+        {"frictionCoef":0.5},
+        {"collision":true},
+        {"selfCollision":true},
+        {"nodeWeight":5},
+		
+		{"group":"tierod_F"},
+		["fhSRl", 0.32, -1.57, 0.3], //moving steering rack part
+		["fhSRr", -0.32, -1.57, 0.3],
+		{"group":""},
+	],
+	
+	"flexbodies": [
+		["mesh", "[group]:", "nonFlexMaterials"],
+		["tutorial_tierod_F", ["tierod_F"]],
+	],
+	
+	"beams": [
+		{"beamSpring":9101000,"beamDamp":60,"beamDeform":77500,"beamStrength":107500},
+	
+		//tierod_F
+		["fh3l", "fhSRl"],
+		["fh3r", "fhSRr"],
+		//steeringrack
+		["fhSRl", "fhSRr"],
+	],
+	
+	"slidenodes": [
+		["id:", "railName", "attached", "fixToRail", "tolerance", "spring", "strength", "capStrength"],
+		["e1x", "steeringrack", true, true, 0.0, 15001000, "FLT_MAX", "FLT_MAX"],
+        ["e2x", "steeringrack", true, true, 0.0, 15001000, "FLT_MAX", "FLT_MAX"],
+	],
+	
+	"rails": { "steeringrack":{"links:":["fhSRr", "fhSRl"], "broken:":[], "looped":false, "capped":true}, },
 },
 }
