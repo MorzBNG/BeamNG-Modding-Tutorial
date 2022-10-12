@@ -14,19 +14,19 @@
 	],
 	"variables":[
 		["name","type","unit","category","default","min","max","title","description"],
-		["$brakebias","range","","Brakes",0.65,0,1,"Front/Rear Bias","Percent of brake torque to the front wheels", {"minDis": 0, "maxDis": 100}],
+		["$brakebias","range","","Brakes",0.72,0.5,1,"Front/Rear Bias","Percent of brake torque to the front wheels", {"minDis": 50, "maxDis": 100}],
 	],
 	"pressureWheels":[
 		["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
-		{"brakeTorque":"$=$brakestrenght * $brakebias * 1900"},
+		{"brakeTorque":"$=$brakestrenght * $brakebias * 1590"},
 		{"parkingTorque":0},
 		
 		{"enableBrakeThermals":true},
 		{"brakeDiameter":0.24},
 		{"brakeMass":3.1},
-		{"brakeType":"disc"},
+		{"brakeType":"vented-disc"},
 		{"rotorMaterial":"steel"},
-		{"brakeVentingCoef":0.8},
+		{"brakeVentingCoef":0.9},
 	],
 },
 
@@ -38,17 +38,15 @@
 	}
 	
 	"slotType":"tutorial_brakes_R",
+	
 	"slots":[
 		["type","default","description"],
 		["brakepad_R","brakepad_R","Rear Brake Pads"],
 	],
-	"variables":[
-		["name","type","unit","category","default","min","max","title","description"],
-		["$brakebias","range","","Brakes",0.65,0,1,"Front/Rear Bias","Percent of brake torque to the front wheels"],
-	],
+	
 	"pressureWheels": [
         ["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
-		{"brakeTorque":"$=$brakebias == nil and $brakestrenght * 1700 or $brakestrenght * (1 - $brakebias) * 1700"},
+		{"brakeTorque":"$=$brakebias == nil and $brakestrenght * 1450 or $brakestrenght * (1 - $brakebias) * 1450"},
 		{"parkingTorque":2000},
 		
 		{"enableBrakeThermals":true},
