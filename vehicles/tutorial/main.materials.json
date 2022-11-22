@@ -1,0 +1,50 @@
+{
+  "tutorial_intcarpet": {
+    "name": "tutorial_intcarpet",
+    "mapTo": "tutorial_intcarpet",
+    "class": "Material",
+    "persistentId": "cfd28cb6-985d-44f9-8e29-5b229b571fa4",
+    "Stages": [
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "tutorial_main": {
+    "name": "tutorial_main",
+    "mapTo": "tutorial_main",
+    "class": "Material",
+    "persistentId": "e8917179-6051-4287-a327-2e623d9ee323",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/tutorial/tutorial_main_ao.data.png",
+        "baseColorMap": "/vehicles/tutorial/tutorial_main_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "/vehicles/tutorial/tutorial_main_m.data.png",
+        "normalMap": "/vehicles/tutorial/tutorial_main_n.normal.png",
+        "roughnessMap": "/vehicles/tutorial/tutorial_main_r.data.png"
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/tutorial/tutorial_main_ao.data.png",
+        "baseColorFactor": [
+          1,
+          0.999989986,
+          0.999989986,
+          1
+        ],
+        "clearCoatFactor": 1,
+        "colorPaletteMap": "/vehicles/tutorial/tutorial_main_p.data.png",
+        "instanceDiffuse": true,
+        "metallicFactor": 1,
+        "normalMap": "/vehicles/tutorial/tutorial_main_n.normal.png",
+        "opacityMap": "/vehicles/tutorial/tutorial_main_c.data.png"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "version": 1.5
+  }
+}
