@@ -1,0 +1,169 @@
+{
+"tutorial_differential_R": {
+	"information": {
+		"name": "Open Rear Differential"
+		"author": "MorzBNG",
+		"value": 300
+	},
+	
+	"slotType": "tutorial_differential_R",
+	
+	"slots": [
+		["type", "default", "description"],
+		["tutorial_driveshaft_R", "tutorial_driveshaft_R", "Rear Driveshaft"],
+		["tutorial_halfshafts_R", "tutorial_halfshafts_R", "Rear Halfshafts"],
+	],
+	
+	"powertrain":[
+		["type", 			 "name", 	   "inputName", "inputIndex"],
+		["differential", "differential_R", "driveshaft", 1],
+	],
+	"differential_R": {
+		"uiName": "Rear Differential",
+		"diffType": "open",
+		"friction": 3.3,
+		"dynamicFriction": 0.0016,
+		"torqueLossCoef": 0.003,
+		"gearRatio": 3.38,
+	},
+	
+	"nodes": [
+		["id", "posX", "posY", "posZ"],
+		{"selfCollision": false},
+		{"collision": false},
+		{"nodeWeight": 24},
+		{"nodeMaterial": "|NM_METAL"},
+		["rdiff", 0.0, 1.26, 0.4],
+	],
+	
+	"beams": [
+		["id1:", "id2:"],
+		{"beamSpring": 2300000, "beamDamp": 100, "beamDeform": 30000, "beamStrenght": "FLT_MAX"},
+		["rdiff", "r2rr"],
+		["rdiff", "r2"],
+		["rdiff", "r2ll"],
+		["rdiff", "r3rr"],
+		["rdiff", "r3"],
+		["rdiff", "r3ll"],
+		["rdiff", "f9l"],
+		["rdiff", "f9r"],
+		["rdiff", "rx1l"],
+		["rdiff", "rx1r"],
+	],
+},
+
+"tutorial_differential_R_LSD": {
+    "information":{
+        "authors":"MorzBNG",
+        "name":"Limited Slip Rear Differential",
+        "value":820,
+    },
+    "slotType" : "tutorial_differential_R",
+    "slots": [
+        ["type", "default", "description"],
+        ["tutorial_driveshaft_R", "tutorial_driveshaft_R", "Rear Driveshaft"],
+		["tutorial_halfshafts_R", "tutorial_halfshafts_R", "Rear Halfshafts"],
+    ],
+    "powertrain" : [
+        ["type", "name", "inputName", "inputIndex"],
+        ["differential", "differential_R", "driveshaft", 1],
+    ],
+    "differential_R": {
+        "friction": 2.5,
+        "dynamicFriction": 0.0012,
+        "torqueLossCoef": 0.03,
+		"gearRatio": 3.38,
+		"diffType":"lsd",
+		"lsdPreload":90,
+		"lsdLockCoef":0.125,
+		"lsdRevLockCoef":0.0625,
+		"uiName":"Rear Differential"
+		"defaultVirtualInertia":0.25
+    },
+    "flexbodies": [
+        ["mesh", "[group]:", "nonFlexMaterials"],
+    ],
+    "nodes": [
+        ["id", "posX", "posY", "posZ"],
+        {"selfCollision":false},
+        {"collision":false},
+        {"nodeMaterial":"|NM_METAL"},
+        {"frictionCoef":0.5},
+        {"group":"tutorial_differential"},
+        {"nodeWeight":28},
+        ["rdiff", 0.0, 1.26, 0.4],
+        {"group":""},
+    ],
+    "beams": [
+        ["id1:", "id2:"],
+        {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+        {"beamSpring":5001000,"beamDamp":125},
+        {"beamDeform":15000,"beamStrength":"FLT_MAX"},
+        ["rdiff", "r2rr"],
+		["rdiff", "r2"],
+		["rdiff", "r2ll"],
+		["rdiff", "r3rr"],
+		["rdiff", "r3"],
+		["rdiff", "r3ll"],
+		["rdiff", "f9l"],
+		["rdiff", "f9r"],
+		["rdiff", "rx1l"],
+		["rdiff", "rx1r"],
+    ],
+},
+
+"tutorial_driveshaft_R": {
+	"information": {
+		"name": "Rear Driveshaft",
+		"author": "MorzBNG",
+		"value": 100
+	},
+	
+	"slotType": "tutorial_driveshaft_R",
+	
+	"powertrain": [
+		["type", 			 "name", 	   "inputName", "inputIndex"],
+		["torsionReactor", "torsionReactor", "gearbox", 1],
+		["shaft", "driveshaft", "torsionReactor", 1, {"uiName": "Driveshaft", "friction": 0.32, "dynamicFriction": 0.0006, "breakTriggerBeam": "driveshaft"}],
+	],
+	
+	"torsionReactor": {
+		"torqueReactionNodes:":["e1l", "e2l", "e4r"],
+	},
+	
+	"beams": [
+		["id1:", "id2:"],
+		{"beamType":"|BOUNDED", "beamLongBound":0.02, "beamShortBound":0.02},
+		{"beamSpring":0, "beamDamp":0 "beamDeform":1500, "beamStrenght":3500},
+		{"beamLimitSpring":6000000, "beamLimitDamp":250},
+		["rdiff", "tra1", {"name": "driveshaft", "breakGroup":"driveshaft", "deformGroup":"driveshaft", "optional":true}],
+		{"beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+	],
+},
+
+"tutorial_halfshafts_R": {
+	"information": {
+		"name": "Rear Halfshafts",
+		"author": "MorzBNG",
+		"value": 100
+	},
+	
+	"slotType": "tutorial_halfshafts_R",
+	
+	"powertrain": [
+		["type", 			 "name", 	   "inputName", "inputIndex"],
+		["shaft", "wheelaxleRL", "differential_R", 1, {"breakTriggerBeam": "halfshaft_RL", "uiName": "Rear Left Halfshaft", "friction": 1.38, "dynamicFriction":0.00342}],
+		["shaft", "wheelaxleRR", "differential_R", 2, {"breakTriggerBeam": "halfshaft_RR", "uiName": "Rear Right Halfshaft", "friction": 1.38, "dynamicFriction":0.00342}],
+	],
+	
+	"beams": [
+		["id1:", "id2:"],
+		{"beamType":"|BOUNDED", "beamLongBound":0.02, "beamShortBound":0.02},
+		{"beamSpring":0, "beamDamp":0 "beamDeform":1500, "beamStrenght":3500},
+		{"beamLimitSpring":6000000, "beamLimitDamp":250},
+		["rw1l", "rdiff", {"name": "halfshaft_RL", "breakGroup":"wheel_RL", "breakGroupType":1, "deformGroup":"wheelaxleRR", "optional":true}],
+		["rw1r", "rdiff", {"name": "halfshaft_RR", "breakGroup":"wheel_RR", "breakGroupType":1, "deformGroup":"wheelaxleRR", "optional":true}],
+		{"beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
+	],
+}
+}

@@ -1,0 +1,69 @@
+{
+"tutorial_transmission_5M": {
+	"information": {
+		"name": "5-speed manual transmission",
+		"authors": "MorzBNG",
+		"value": 700
+	},
+	
+	"slotType": "tutorial_transmission",
+	
+	"flexbodies": [
+		["mesh", "[group]:", "nonFlexMaterials"],
+		["tutorial_transmission", ["tutorial_transmission", "tutorial_body"]],
+	],
+	
+	"powertrain": [
+		["type", 			 "name", 	   "inputName", "inputIndex"],
+		["frictionClutch", "clutch", "mainEngine", 1],
+		["manualGearbox", "gearbox", "clutch", 1],
+	],
+	
+	"clutch": {
+		"clutchFreePlay": 0.35,
+	},
+	
+	"gearbox": {
+		"gearRatios": [-3.89, 0, 4.20, 2.49, 1.66, 1.24, 1.0],
+		"uiName": "Gearbox",
+		"friction": 0.92,
+		"dynamicFriction": 0.001,
+		"torqueLossCoef": 0.0145,
+		
+		"gearboxNode:": ["tra1"],
+		
+		"gearWhineCoefsInput": [0.8, 0, 0.3, 0.3, 0.3, 0.3, 0.3],
+		"gearWhineCoefsOutput":  [0, 0, 0.6, 0.6, 0.6, 0.6, 0.6],
+		
+		"gearWhineInputEvent": "event:>Vehicle>Transmission>helical_01>twine_in",
+		"gearWhineOutputEvent": "event:>Vehicle>Transmission>helical_01>twine_out",
+	},
+	
+	"vehicleController": {
+		"calculateOptimalLoadShiftPoints": true,
+		"wheelSlipThreshold": 9000,
+		"lowShiftDownRPM":[0,0,0,1600,2000,1800,1800],
+		"lowShiftUpRPM":[0,0,3400,3200,3000,3000],
+	},
+	
+	"nodes": [
+		["id", "posX", "posY", "posZ"],
+		{"nodeMaterial": "|NM_METAL"},
+		{"nodeWeight": 17},
+		{"selfCollision": false},
+		["tra1", 0, -0.85, 0.45, {"group": "tutorial_transmission"}],
+	],
+	
+	"beams": [
+		{"beamSpring": 900000},
+		["tra1", "e2l"],
+		["tra1", "e2r"],
+		["tra1", "e4l"],
+		["tra1", "e4r"],
+		["tra1", "f1l"],
+		["tra1", "f1r"],
+		["tra1", "f2l"],
+		["tra1", "f2r"],
+	],
+}
+}

@@ -1,0 +1,147 @@
+{
+"tutorial_headlight_L": {
+    "information":{
+        "authors":"MorzBNG",
+        "name":"Left Headlight",
+        "value":120,
+    },
+	
+    "slotType" : "tutorial_headlight_L",
+	
+    "flexbodies": [
+        ["mesh", "[group]:", "nonFlexMaterials"],
+        {"deformGroup":"headlightglass_L_break", "deformMaterialBase":"tutorial_glass", "deformMaterialDamaged":"tutorial_glass_dmg"},
+        ["tutorial_headlightglass_L", ["tutorial_headlight_L"],[]{"deformSound":"event:>Destruction>Vehicle>Glass>glassbreaksound4", "deformVolume":0.5}],
+        {"deformGroup":"headlightglass_L_break", "deformMaterialBase":"tutorial_lights", "deformMaterialDamaged":"tutorial_lights_dmg"},
+        ["tutorial_headlight_L", ["tutorial_headlight_L"]],
+		{"deformGroup":""}
+    ],
+	
+    "props": [
+        ["func"      , "mesh"              , "idRef:", "idX:", "idY:"            , "baseRotation"        , "rotation"                 , "translation"        , "min", "max", "offset", "multiplier"],
+        {
+            "lightInnerAngle":0,
+            "lightOuterAngle":120,
+            "lightColor":{"r":255, "g":255, "b":160, "a":255},
+            "lightAttenuation":{"x":0, "y":1, "z":1},
+            "lightCastShadows":true,
+            "flareName":"vehicleHeadLightFlare",
+            "cookieName":"art/special/BNG_light_cookie_headlight.dds"
+            "texSize":512,
+            "shadowSoftness":0.5,
+        },
+        //low beams angled right slightly to avoid blinding oncoming traffic
+        ["lowbeam",  "SPOTLIGHT", "he4l", "he3l", "he2l", {"x":-30, "y":-20, "z":-10} , {"x":0, "y":0, "z":0}    , {"x":0, "y":0, "z":0}, 0, 0, 0, 1, {"baseTranslation":{"x":0.1, "y":0.4, "z":-0.05}"lightRange":50,"lightBrightness":0.4,"lightOuterAngle":95,"flareScale":0.07,"deformGroup":"headlightglass_L_break"}],
+        //high beams
+        ["highbeam" ,"SPOTLIGHT", "he4l", "he3l", "he2l", {"x":-10, "y":-20, "z":-10} , {"x":0, "y":0, "z":0}    , {"x":0, "y":0, "z":0}, 0, 0, 0, 1, {"baseTranslation":{"x":0.57, "y":0.4, "z":-0.05},"lightRange":80,"lightBrightness":0.7,"lightOuterAngle":80,"flareScale":0.09,"deformGroup":"headlightglass_L_break"}],
+    ],
+	
+    "nodes": [
+        ["id", "posX", "posY", "posZ"],
+        //--HEADLIGHT--
+        //left
+        {"selfCollision":true},
+        {"collision":true},
+        {"nodeMaterial":"|NM_PLASTIC"},
+        {"frictionCoef":0.5},
+        {"nodeWeight":1.0},
+        {"group":"tutorial_headlight_L"},
+        ["he1l", 0.32, -2.07, 0.79],
+        ["he3l", 0.32, -2.09, 0.70],
+        ["he2l", 0.64, -1.99, 0.79],
+        ["he4l", 0.64, -2.00, 0.70],
+        {"selfCollision":false},
+        ["he5l", 0.51, -1.92, 0.75],
+        {"group":""},
+    ],
+	
+    "beams": [
+        ["id1:", "id2:"],
+        //--HEADLIGHT--
+        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+        {"beamSpring":1800600,"beamDamp":90},
+        {"beamDeform":11210,"beamStrength":49725},
+        //headlight main shape
+        {"deformLimitExpansion":1.1},
+        {"deformGroup":"headlightglass_L_break", "deformationTriggerRatio":0.01},
+        ["he1l","he2l"],
+        ["he3l","he4l"],
+        ["he1l","he3l"],
+        ["he2l","he4l"],
+
+        ["he1l","he4l"],
+        ["he2l","he3l"],
+
+        ["he1l","he5l"],
+        ["he2l","he5l"],
+        ["he3l","he5l"],
+        ["he4l","he5l"],
+
+        //attach
+        {"deformLimitExpansion":""},
+        {"disableTriangleBreaking":true},
+        {"beamSpring":600600,"beamDamp":90},
+        {"beamDeform":8995,"beamStrength":15000},
+        {"breakGroup":"headlight_a_L"},
+        ["he5l","f15ll"],
+        ["he5l","f15l"],
+        ["he2l","f15ll"],
+        ["he4l","f15ll"],
+        ["he4l", "f13ll"],
+        ["he4l", "f11ll"],
+
+        {"beamDeform":7995,"beamStrength":19050},
+        {"breakGroup":"headlight_b_L"},
+        ["he1l","f15ll"],
+        ["he1l","f15l"],
+        ["he3l","f15l"],
+        ["he3l","f13ll"],
+        ["he3l", "f13l"],
+        ["he3l", "f11l"],
+        {"breakGroup":""},
+        {"deformGroup":""},
+
+        //headlight support beams
+        {"beamType":"|SUPPORT", "beamLongBound":4},
+        {"beamSpring":600600,"beamDamp":90},
+        {"beamDeform":11880,"beamStrength":297000},
+        {"optional":true},
+        ["he2l","h4"],
+        ["he4l","h4"],
+        ["he1l","h4l"],
+        {"optional":false},
+
+        //inter part triangle breaking triggers
+        {"beamType":"|SUPPORT", "beamLongBound":2.5},
+        {"beamSpring":0,"beamDamp":0},
+        {"beamDeform":1000,"beamStrength":1000},
+        {"breakGroup":"headlight_fender_L"},
+        {"optional":true},
+        ["he5l","fe13l"],
+        {"breakGroup":"headlight_grille_L"},
+        ["he5l","g1l"],
+        {"breakGroup":"headlight_bumper_L"},
+        ["he5l","fb1ll"],
+        {"breakGroup":""},
+        {"disableTriangleBreaking":false},
+        {"optional":false},
+        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+        {"deformLimitExpansion":1.1},
+    ],
+	
+    "triangles": [
+        ["id1:","id2:","id3:"],
+        {"groundModel":"metal"},
+        //left headlight
+        {"group":"tutorial_headlight_L"},
+        {"dragCoef":3},
+        ["he1l","he3l","he4l"],
+        ["he1l","he4l","he2l"],
+        ["he2l","he4l","he5l"],
+        ["he5l","he1l","he2l"],
+        ["he5l","he3l","he1l"],
+        ["he5l","he4l","he3l"],
+        {"group":""},
+    ],
+},
+}

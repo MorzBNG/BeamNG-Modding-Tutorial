@@ -1,11 +1,87 @@
 {
-	"Name":"Tutorial",
-	"Author":"MorzBNG",
-	"Type":"Vehicle",
+    "Name": "Tutorial",
+    "Author": "MorzBNG",
+    "Type": "Car",
 	"Brand": "MorzBNGs",
-	"default_pc": "default",
-	"defaul_color": "Pearl White",
-	"colors": {
-		"Pearl White": "1 1 1 1"
+	"default_pc": "332i",
+	"defaultPaintName1": "Alpina White",
+	"paints":{
+		"Alpina White":{
+		  "baseColor":[
+			1,
+			0.996,
+			0.91,
+			1.2
+		  ],
+		  "clearcoat":1,
+		  "clearcoatRoughness":0.06,
+		  "metallic":0,
+		  "roughness":1
+		},
+		
+		"Mugello Red":{
+		  "baseColor":[
+			0.83,
+			0,
+			0,
+			1.2
+		  ],
+		  "clearcoat":1,
+		  "clearcoatRoughness":0.06,
+		  "metallic":0,
+		  "roughness":0
+		},
+		
+		"Dakar Yellow":{
+		  "baseColor":[
+			1,
+			0.917,
+			0.211,
+			1.2
+		  ],
+		  "clearcoat":1,
+		  "clearcoatRoughness":0.06,
+		  "metallic":0.1,
+		  "roughness":0.11
+		},
+		
+		"Island Green":{
+		  "baseColor":[
+			0.04,
+			0.18,
+			0.172,
+			1.2
+		  ],
+		  "clearcoat":0.7,
+		  "clearcoatRoughness":0.04,
+		  "metallic":1,
+		  "roughness":1
+		},
+		
+		"Cosmos Black":{
+		  "baseColor":[
+			0.062,
+			0,
+			0.176,
+			1.2
+		  ],
+		  "clearcoat":0.5,
+		  "clearcoatRoughness":0.04,
+		  "metallic":1,
+		  "roughness":0.4
+		},
+
+		"Glacier Blue":{
+		  "baseColor":[
+			0.605,
+			0.78,
+			1,
+			1.2
+		  ],
+		  "clearcoat":0.3,
+		  "clearcoatRoughness":0.1,
+		  "metallic":1,
+		  "roughness":0.4
+		}
 	}
 }

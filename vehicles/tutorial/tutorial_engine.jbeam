@@ -1,44 +1,46 @@
 {
-"tutorial_engine_I6_3.2l":{
+"tutorial_engine_I4_1.9l":{
 	"information":{
-        "authors":"MorzBNG",
-        "name":"3.2l Inline 6",
-		"value":100
+        "authors": "MorzBNG",
+        "name": "1.9l Inline 4",
+		"value": 1200
     },
 	
 	"slotType":"tutorial_engine",
+	
+	"slots": [
+		["type", "default", "description"],
+		["tutorial_transmission", "tutorial_transmission_5M", "Transmission"],
+	],
+	
+	"flexbodies": [
+        ["mesh", "[group]:", "nonFlexMaterials"],
+        ["tutorial_engine", ["tutorial_engine"]],
+    ],
 	
 	"powertrain":[
 		["type", 			 "name", 	   "inputName", "inputIndex"],
 		["combustionEngine", "mainEngine", "dummy", 	0],
 	],  
-	
+
 	"mainEngine":{
 		"torque": [
 			["rpm", "torque"]
 			[0, 0],
-			[500, 246],
-			[1000, 264],
-			[1500, 280],
-			[2000, 290],
-			[2500, 303],
-			[3000, 315],
-			[3500, 324],
-			[4000, 338],
-			[4500, 360],
-			[4900, 365],
-			[5000, 363],
-			[5500, 351],
-			[6000, 340],
-			[6500, 330],
-			[7000, 320],
-			[7500, 311],
-			[8000, 292],
+            [500, 90],
+            [1000, 132],
+            [2000, 159],
+            [3000, 165],
+            [4000, 157],
+            [5000, 153],
+            [6000, 152],
+            [7000, 138],
+            [8000, 116],
 		],
 		
 		"idleRPM": 800,
-		"maxRPM": 8000,
-		"idleRPMRoughness": 25,
+		"maxRPM": 6700,
+		"idleRPMRoughness": 45,
 		"inertia": 0.162,
 		"friction": 19,
 		"dynamicFriction": 0.024,
@@ -59,42 +61,46 @@
 		
 		"waterDamage": {"[engineGroup]:":["engine_intake"]},
 		"engineBlock": {"[engineGroup]:":["engine_block"]},
+		"breakTriggerBeam":"engine",
 
 		"soundConfig": "soundConfig",
         "soundConfigExhaust": "soundConfigExhaust",
+
+		//engine deform groups
+        "deformGroups":["mainEngine"],
 	},
 	"soundConfig": {
-        "sampleName": "I6_2_engine",
-        "intakeMuffling": 1,
+        "sampleName": "I4_2_engine",
+        "intakeMuffling": 0.3,
 
-        "mainGain": -8,
+        "mainGain": -4,
         "onLoadGain":1,
-        "offLoadGain":0.6,
+        "offLoadGain":0.5,
 
         "maxLoadMix": 0.3,
         "minLoadMix": 0.05,
 
-        "eqLowGain": 0,
-        "eqLowFreq": 450,
+        "eqLowGain": -4,
+        "eqLowFreq": 750,
         "eqLowWidth": 0.2,
 
-        "eqHighGain": -8,
+        "eqHighGain": -1,
         "eqHighFreq": 1500,
         "eqHighWidth": 0.2,
 
-        "lowShelfGain":-3,
+        "lowShelfGain":-1,
         "lowShelfFreq":180,
 
         "highShelfGain":4,
         "highShelfFreq":6000,
 
-        "fundamentalFrequencyCylinderCount":6,
+        "fundamentalFrequencyCylinderCount":4,
         "eqFundamentalGain": -5,
     },
 	"soundConfigExhaust": {
-        "sampleName": "I6_2_exhaust",
+        "sampleName": "I4_2_exhaust",
 
-        "mainGain": 2,
+        "mainGain": -2,
         "onLoadGain":1,
         "offLoadGain":0.5,
 
@@ -102,10 +108,10 @@
         "minLoadMix": 0.05,
 
         "eqLowGain": -6,
-        "eqLowFreq": 1200,
+        "eqLowFreq": 1000,
         "eqLowWidth": 0.2,
 
-        "eqHighGain": -3,
+        "eqHighGain": 0,
         "eqHighFreq": 3000,
         "eqHighWidth": 0.2,
 
@@ -115,7 +121,7 @@
         "highShelfGain":-10,
         "highShelfFreq":6000,
 
-        "fundamentalFrequencyCylinderCount":6,
+        "fundamentalFrequencyCylinderCount":4,
         "eqFundamentalGain": -4,
     },
 	"nodes": [
@@ -127,16 +133,16 @@
         {"frictionCoef":0.5},
         {"group":"tutorial_engine"},
         {"engineGroup":"engine_block"},
-        {"nodeWeight":18},
+        {"nodeWeight":12},
         ["e1r", -0.17, -1.8, 0.42,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
         ["e1l", 0.17, -1.8, 0.42],
-        ["e2r", -0.17, -1.45, 0.42,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
-        ["e2l", 0.17, -1.45, 0.42],
+        ["e2r", -0.17, -1.15, 0.42,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e2l", 0.17, -1.15, 0.42],
         {"engineGroup":["engine_block","engine_intake"]},
-        ["e3r", -0.17, -1.84, 0.92,{"isExhaust":"mainEngine","chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
-        ["e3l", 0.17, -1.84, 0.95],
-        ["e4r", -0.17, -1.25, 0.95,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
-        ["e4l", 0.17, -1.25, 0.95],
+        ["e3r", -0.17, -1.84, 0.82,{"isExhaust":"mainEngine","chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e3l", 0.17, -1.84, 0.85],
+        ["e4r", -0.17, -1.25, 0.85,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e4l", 0.17, -1.25, 0.85],
         {"group":""},
         {"engineGroup":""},
 	],
@@ -144,10 +150,10 @@
 	"beams": [
         ["id1:", "id2:"],
         {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
-        {"beamSpring":8400600,"beamDamp":150},
-        {"beamDeform":540000,"beamStrength":"FLT_MAX"},
+        {"beamSpring":6400600,"beamDamp":150},
+        {"beamDeform":294000,"beamStrength":"FLT_MAX"},
         //engine
-        {"deformGroup":"mainEngine", "deformationTriggerRatio":0.001}
+        {"deformGroup":"mainEngine", "deformationTriggerRatio":0.0001}
         ["e1r","e1l"],
         ["e2r","e2l"],
         ["e3r","e3l"],
@@ -184,27 +190,255 @@
         ["e2l","e4r"],
 
         {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+		{"beamSpring":4800600,"beamDamp":170, "beamDeform":60000,"beamStrength":390000},
+		{"name": "engine"},
+		["e2l","f1l"],
+		["e2r","f1r"],
+		["e4l","f6l"],
+		["e4r","f6r"],
 		
-		["n2","e1l"],
-        ["n2","e2l"],
-        ["n2","e3l"],
-        ["n2","e4l"],
+		["f10ll","e1l"],
+        ["f10ll","e2l"],
+        ["f10ll","e3l"],
+        ["f10ll","e4l"],
 		
-		["nl","e1l"],
-        ["nl","e2l"],
-        ["nl","e3l"],
-        ["nl","e4l"],
-		
-		["n1","e1r"],
-        ["n1","e2r"],
-        ["n1","e3r"],
-        ["n1","e4r"],
-		
-		["nr","e1r"],
-        ["nr","e2r"],
-        ["nr","e3r"],
-        ["nr","e4r"],
+		["f10rr","e1r"],
+        ["f10rr","e2r"],
+        ["f10rr","e3r"],
+        ["f10rr","e4r"],
+		{"name": ""},
 		{"deformGroup":""},
     ],
-}  
+},
+
+"tutorial_engine_I6_2.5l":{
+	"information":{
+        "authors": "MorzBNG",
+        "name": "2.5l Inline 6",
+		"value": 2000
+    },
+	
+	"slotType":"tutorial_engine",
+	
+	"slots": [
+		["type", "default", "description"],
+		["tutorial_transmission", "tutorial_transmission_5M", "Transmission"],
+	],
+	
+	"flexbodies": [
+        ["mesh", "[group]:", "nonFlexMaterials"],
+        ["tutorial_engine", ["tutorial_engine"]],
+    ],
+	
+	"powertrain":[
+		["type", 			 "name", 	   "inputName", "inputIndex"],
+		["combustionEngine", "mainEngine", "dummy", 	0],
+	],  
+
+	"mainEngine":{
+		"torque": [
+			["rpm", "torque"]
+			[0, 0],
+            [500, 110],
+            [1000, 134],
+            [2000, 179],
+            [3000, 210],
+            [4000, 245],
+            [5000, 242],
+            [6000, 233],
+            [7000, 178],
+            [8000, 132],
+		],
+
+		"idleRPM": 900,
+		"maxRPM": 7000,
+		"idleRPMRoughness": 24,
+		"inertia": 0.162,
+		"friction": 19,
+		"dynamicFriction": 0.024,
+		"burnEfficiency":[
+            [0, 0.10],
+            [0.05, 0.29],
+            [0.4, 0.45],
+            [0.7, 0.52],
+            [1, 0.31],
+        ],
+		
+		"torqueReactionNodes:":["e1l","e2l","e4r"],
+		
+		"uiName": "Engine",
+
+		"energyStorage": "mainTank",
+		"requiredEnergyType": "gasoline",
+		
+		"waterDamage": {"[engineGroup]:":["engine_intake"]},
+		"engineBlock": {"[engineGroup]:":["engine_block"]},
+		"breakTriggerBeam":"engine",
+
+		"soundConfig": "soundConfig",
+        "soundConfigExhaust": "soundConfigExhaust",
+
+		//engine deform groups
+        "deformGroups":["mainEngine"],
+	},
+	"soundConfig": {
+        "sampleName": "I6_2_engine",
+        "intakeMuffling": 0.4,
+
+        "mainGain": -7,
+        "onLoadGain":1,
+        "offLoadGain":0.5,
+
+        "maxLoadMix": 0.5,
+        "minLoadMix": 0.05,
+
+        "eqLowGain": -7,
+        "eqLowFreq": 450,
+        "eqLowWidth": 0.2,
+
+        "eqHighGain": -1,
+        "eqHighFreq": 1500,
+        "eqHighWidth": 0.2,
+
+        "lowShelfGain":-4,
+        "lowShelfFreq":180,
+
+        "highShelfGain":4,
+        "highShelfFreq":6000,
+
+        "fundamentalFrequencyCylinderCount":6,
+        "eqFundamentalGain": -5,
+    },
+	"soundConfigExhaust": {
+        "sampleName": "I6_2_exhaust",
+
+        "mainGain": 0,
+        "onLoadGain":1,
+        "offLoadGain":0.5,
+
+        "maxLoadMix": 0.67,
+        "minLoadMix": 0.05,
+
+        "eqLowGain": -2,
+        "eqLowFreq": 1200,
+        "eqLowWidth": 0.2,
+
+        "eqHighGain": -3,
+        "eqHighFreq": 3000,
+        "eqHighWidth": 0.2,
+
+        "lowShelfGain":5,
+        "lowShelfFreq":350,
+
+        "highShelfGain":-10,
+        "highShelfFreq":6000,
+
+        "fundamentalFrequencyCylinderCount":6,
+        "eqFundamentalGain": -4,
+    },
+	"nodes": [
+        ["id", "posX", "posY", "posZ"],
+        //--3.2L I6 Engine--
+        {"selfCollision":false},
+        {"collision":true},
+        {"nodeMaterial":"|NM_METAL"},
+        {"frictionCoef":0.5},
+        {"group":"tutorial_engine"},
+        {"engineGroup":"engine_block"},
+        {"nodeWeight":13},
+        ["e1r", -0.17, -1.8, 0.42,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e1l", 0.17, -1.8, 0.42],
+        ["e2r", -0.17, -1.15, 0.42,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e2l", 0.17, -1.15, 0.42],
+        {"engineGroup":["engine_block","engine_intake"]},
+        ["e3r", -0.17, -1.84, 0.82,{"isExhaust":"mainEngine","chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e3l", 0.17, -1.84, 0.85],
+        ["e4r", -0.17, -1.25, 0.85,{"chemEnergy":2000,"burnRate":0.39,"flashPoint":800,"specHeat": 0.1,"selfIgnitionCoef":false,"smokePoint":650,"baseTemp":"thermals","conductionRadius":0.12}],
+        ["e4l", 0.17, -1.25, 0.85],
+        {"group":""},
+        {"engineGroup":""},
+	],
+	
+	"beams": [
+        ["id1:", "id2:"],
+        {"beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+        {"beamSpring":6400600,"beamDamp":150},
+        {"beamDeform":294000,"beamStrength":"FLT_MAX"},
+        //engine
+        {"deformGroup":"mainEngine", "deformationTriggerRatio":0.0001}
+        ["e1r","e1l"],
+        ["e2r","e2l"],
+        ["e3r","e3l"],
+        ["e4r","e4l"],
+
+        ["e1r","e2r"],
+        ["e1l","e2l"],
+        ["e3r","e4r"],
+        ["e3l","e4l"],
+
+        ["e1r","e3r"],
+        ["e1l","e3l"],
+        ["e2r","e4r"],
+        ["e2l","e4l"],
+
+        ["e2r","e3r"],
+        ["e2l","e3l"],
+        ["e2r","e3l"],
+        ["e2l","e3r"],
+
+        ["e1r","e4r"],
+        ["e1l","e4l"],
+        ["e1r","e4l"],
+        ["e1l","e4r"],
+
+        ["e1r","e2l"],
+        ["e1l","e2r"],
+        ["e3r","e4l"],
+        ["e3l","e4r"],
+
+        ["e1r","e3l"],
+        ["e1l","e3r"],
+        ["e2r","e4l"],
+        ["e2l","e4r"],
+
+        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1.0, "beamShortBound":1.0},
+		{"beamSpring":4800600,"beamDamp":170, "beamDeform":60000,"beamStrength":390000},
+		{"name": "engine"},
+		["e2l","f1l"],
+		["e2r","f1r"],
+		["e4l","f6l"],
+		["e4r","f6r"],
+		
+		["f10ll","e1l"],
+        ["f10ll","e2l"],
+        ["f10ll","e3l"],
+        ["f10ll","e4l"],
+		
+		["f10rr","e1r"],
+        ["f10rr","e2r"],
+        ["f10rr","e3r"],
+        ["f10rr","e4r"],
+		{"name": ""},
+		{"deformGroup":""},
+    ],
+},
+
+"tutorial_clutch": {
+	"information": {
+		"name": "Clutch",
+		"authors": "MorzBNG",
+		"value": 800
+	},
+	
+	"slotType": "tutorial_clutch",
+	
+	"powertrain":[
+		["type", 		   "name", 	 "inputName",   "inputIndex"],
+		["frictionClutch", "clutch", "mainEngine", 	1],
+	],
+	
+	"clutch": {
+		
+	},
+},
 }

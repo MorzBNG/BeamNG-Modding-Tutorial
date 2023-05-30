@@ -1,0 +1,41 @@
+{
+  "0-100 km/h":8.3,
+  "0-100 mph":92.9,
+  "0-60 mph":12,
+  "100-0 km/h":40.1,
+  "60-0 mph":110.6,
+  "60-100 mph":80.8,
+  "BoundingBox":[
+    [
+      -0.57,
+      -1.85,
+      -0.2
+    ],
+    [
+      1.23,
+      2.07,
+      1.13
+    ]
+  ],
+  "Braking G":1.082,
+  "Config Type":"Factory",
+  "Configuration":"332i (M)",
+  "Description":"Base model with a 3.2l motor",
+  "Drivetrain":"RWD",
+  "Fuel Type":"Gasoline",
+  "Induction Type":"NA",
+  "Off-Road Score":27,
+  "Performance Class":"3",
+  "Population":3000,
+  "Power":78,
+  "PowerPeakRPM":"5600 - 6500",
+  "Propulsion":"ICE",
+  "Top Speed":44.86847769,
+  "Torque":180,
+  "TorquePeakRPM":"2850 - 4150",
+  "Transmission":"Manual",
+  "Value":2500,
+  "Weight":1060,
+  "Weight/Power":12.94871795,
+  "defaultPaintName1":"Alpina White"
+}

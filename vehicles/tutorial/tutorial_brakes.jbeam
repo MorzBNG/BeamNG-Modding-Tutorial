@@ -3,7 +3,7 @@
 	"information":{
 		"authors":"MorzBNG",
 		"name":"Front Brakes",
-		"value":"200"
+		"value":200
 	}
 	
 	"slotType":"tutorial_brakes_F",
@@ -12,29 +12,35 @@
 		["type", "default", "description"],
 		["brakepad_F","brakepad_F","Front Brake Pads"],
 	],
-	"variables":[
-		["name","type","unit","category","default","min","max","title","description"],
-		["$brakebias","range","","Brakes",0.72,0.5,1,"Front/Rear Bias","Percent of brake torque to the front wheels", {"minDis": 50, "maxDis": 100}],
-	],
-	"pressureWheels":[
-		["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
-		{"brakeTorque":"$=$brakestrenght * $brakebias * 1590"},
-		{"parkingTorque":0},
+	
+	"pressureWheels": [
+        ["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+        //brakes
+        {"brakeTorque":"$=$brakestrength*2320"},
+        {"brakeInputSplit":1},
+        {"brakeSplitCoef":1},
+        {"parkingTorque":0},
+        {"brakeSpring":125},
+
+        //brake thermals
+        {"enableBrakeThermals":true},
+        {"brakeDiameter":0.276},
+        {"brakeMass":7.0},
+        {"brakeType":"vented-disc"},
+        {"rotorMaterial":"steel"},
+        {"brakeVentingCoef":1.0},
+        //brake sounds
+        {"squealCoefNatural": 0.0, "squealCoefLowSpeed": 0.0},
 		
-		{"enableBrakeThermals":true},
-		{"brakeDiameter":0.24},
-		{"brakeMass":3.1},
-		{"brakeType":"vented-disc"},
-		{"rotorMaterial":"steel"},
-		{"brakeVentingCoef":0.9},
-	],
+		{"absSlipRatioTarget":0.19}
+    ],
 },
 
 "tutorial_brakes_R":{
 	"information":{
 		"authors":"MorzBNG",
 		"name":"Rear Brakes",
-		"value":"700"
+		"value":200
 	}
 	
 	"slotType":"tutorial_brakes_R",
@@ -46,15 +52,24 @@
 	
 	"pressureWheels": [
         ["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
-		{"brakeTorque":"$=$brakebias == nil and $brakestrenght * 1450 or $brakestrenght * (1 - $brakebias) * 1450"},
-		{"parkingTorque":2000},
+        //brakes
+        {"brakeTorque":"$=$brakestrength*880"},
+        {"brakeInputSplit":0.4},
+        {"brakeSplitCoef":0.2},
+        {"parkingTorque":1300},
+        {"brakeSpring":125},
+
+        //brake thermals
+        {"enableBrakeThermals":true},
+        {"brakeDiameter":0.26},
+        {"brakeMass":4.4},
+        {"brakeType":"disc"},
+        {"rotorMaterial":"steel"},
+        {"brakeVentingCoef":0.8},
+        //brake sounds
+        {"squealCoefNatural": 0.0, "squealCoefLowSpeed": 0.0},
 		
-		{"enableBrakeThermals":true},
-		{"brakeDiameter":0.22},
-		{"brakeMass":2.8},
-		{"brakeType":"disc"},
-		{"rotorMaterial":"steel"},
-		{"brakeVentingCoef":0.8},
-	],
+		{"absSlipRatioTarget":0.16}
+    ],
 }
 }

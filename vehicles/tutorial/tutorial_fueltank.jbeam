@@ -13,6 +13,11 @@
         ["$fuel", "range", "L", "Chassis", 63, 0, 63, "Fuel Volume", "Initial fuel volume", {"stepDis":0.5}],
     ],
 	
+	"flexbodies": [
+		["mesh", "[group]:", "nonFlexMaterials"],
+		["tutorial_fueltank", ["tutorial_fueltank"]],
+	],
+	
 	"energyStorage":[
 		["type", "name"]
 		["fuelTank", "mainTank"],
@@ -32,34 +37,35 @@
         {"frictionCoef":1},
         {"collision":true},
         {"selfCollision":true},
-        {"group":""},
-        {"nodeWeight":2},
+        {"group":"tutorial_fueltank"},
+        {"nodeWeight":4},
         {"engineGroup":["fuel"]},
         {"nodeMaterial":"|NM_PLASTIC"},
         {"chemEnergy":50,"burnRate":1.2,"flashPoint":200,"vaporPoint":97,"specHeat":0.03,"selfIgnitionCoef":0.04,"smokePoint":1200,"containerBeam":"fueltank"},
-		["ft1", 0, 1.02, 0.4],
-        ["ft1l", 0.31, 1.02, 0.4],
-        ["ft1r", -0.31, 1.02, 0.4],
-        ["ft2", 0, 1.02, 0.5],
-        ["ft2l", 0.31, 1.02, 0.5],
-        ["ft2r", -0.31, 1.02, 0.5],
-		["ft3", 0, 0.7, 0.4],
-        ["ft3l", 0.31, 0.7, 0.4],
-        ["ft3r", -0.31, 0.7, 0.4],
-		["ft4", 0, 0.7, 0.5],
-        ["ft4l", 0.31, 0.7, 0.5],
-        ["ft4r", -0.31, 0.7, 0.5],
+		["ft1",  0,     0.82, 0.4],
+        ["ft1l", 0.31,  0.82, 0.4],
+        ["ft1r", -0.31, 0.82, 0.4],
+        ["ft2",  0,     0.82, 0.5],
+        ["ft2l", 0.31,  0.82, 0.5],
+        ["ft2r", -0.31, 0.82, 0.5],
+		["ft3",  0,     0.5, 0.4],
+        ["ft3l", 0.31,  0.5, 0.4],
+        ["ft3r", -0.31, 0.5, 0.4],
+		["ft4",  0,     0.5, 0.5],
+        ["ft4l", 0.31,  0.5, 0.5],
+        ["ft4r", -0.31, 0.5, 0.5],
 		{"selfIgnitionCoef":false,"selfCollision":false},
         {"chemEnergy":false,"burnRate":false,"flashPoint":false,"vaporPoint":false,"specHeat":false,"selfIgnitionCoef":false,"smokePoint":false,"containerBeam":false},
         {"engineGroup":""},
+		{"group":""},
     ],
 	
 	
     "beams": [
         ["id1:", "id2:"],
         {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
-        {"beamSpring":60600,"beamDamp":12},
-        {"beamDeform":1620,"beamStrength":3600},
+        {"beamSpring":500600,"beamDamp":121},
+        {"beamDeform":5620,"beamStrength":"FLT_MAX"},
         {"disableMeshBreaking":true,"disableTriangleBreaking":true},
         {"deformLimitExpansion":""},
 		{"name":"fueltank"},
@@ -116,336 +122,32 @@
 
         {"breakGroup":""},
         {"disableMeshBreaking":false,"disableTriangleBreaking":false},
-		{"beamSpring":160600,"beamDamp":80},
-        {"beamDeform":13000,"beamStrength":40000},
-		["ft1r", "n3"],
-		["ft2r", "n3"],
-		["ft3r", "n3"],
-		["ft4r", "n3"],
-		
-		["ft1l", "n4"],
-		["ft2l", "n4"],
-		["ft3l", "n4"],
-		["ft4l", "n4"],
-		
-		["ft1r", "nr"],
-		["ft2r", "nr"],
-		["ft3r", "nr"],
-		["ft4r", "nr"],
-		
-		["ft1l", "nl"],
-		["ft2l", "nl"],
-		["ft3l", "nl"],
-		["ft4l", "nl"],
-		
-		["ft1", "axleRL2"],
-		["ft2", "axleRL2"],
-		["ft3", "axleRL2"],
-		["ft4", "axleRL2"],
-		["ft1", "axleRR2"],
-		["ft2", "axleRR2"],
-		["ft3", "axleRR2"],
-		["ft4", "axleRR2"],
-    ],
-}
-
-"tutorial_explosive_fueltank":{
-	"information":{
-		"authors": "MorzBNG",
-		"name": "Explosive Fuel Tank",
-		"value": 500
-	},
-	
-	"slotType":"tutorial_fueltank",
-
-	"variables": [
-        ["name", "type", "unit", "category", "default", "min", "max", "title", "description"],
-        ["$fuel", "range", "L", "Chassis", 63, 0, 63, "Fuel Volume", "Initial fuel volume", {"stepDis":0.5}],
-    ],
-	
-	"energyStorage":[
-		["type", "name"]
-		["fuelTank", "mainTank"],
-	],
-	
-	"mainTank":{
-		"energyType" : "gasoline",
-		"fuelCapacity" : 63,
-		"startingFuelCapacity": "$fuel",
-		"fuel": {"[engineGroup]":["fuel"]},
-		"breakTriggerBeam":"fueltank",
-	}
-
-	"nodes": [
-        ["id", "posX", "posY", "posZ"],
-        //fuel tank particles
-        {"frictionCoef":1},
-        {"collision":true},
-        {"selfCollision":true},
-        {"group":""},
-        {"nodeWeight":2},
-        {"engineGroup":["fuel"]},
-        {"nodeMaterial":"|NM_PLASTIC"},
-        {"chemEnergy":50,"burnRate":4,"flashPoint":200,"vaporPoint":97,"specHeat":0.03,"selfIgnitionCoef":0.1,"smokePoint":220,"containerBeam":"fueltank"},
-		["ft1", 0, 1.02, 0.4],
-        ["ft1l", 0.31, 1.02, 0.4],
-        ["ft1r", -0.31, 1.02, 0.4],
-        ["ft2", 0, 1.02, 0.5],
-        ["ft2l", 0.31, 1.02, 0.5],
-        ["ft2r", -0.31, 1.02, 0.5],
-		["ft3", 0, 0.7, 0.4],
-        ["ft3l", 0.31, 0.7, 0.4],
-        ["ft3r", -0.31, 0.7, 0.4],
-		["ft4", 0, 0.7, 0.5],
-        ["ft4l", 0.31, 0.7, 0.5],
-        ["ft4r", -0.31, 0.7, 0.5],
-		{"selfIgnitionCoef":false,"selfCollision":false},
-        {"chemEnergy":false,"burnRate":false,"flashPoint":false,"vaporPoint":false,"specHeat":false,"selfIgnitionCoef":false,"smokePoint":false,"containerBeam":false},
-        {"engineGroup":""},
-    ],
-	
-	
-    "beams": [
-        ["id1:", "id2:"],
-        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
-        {"beamSpring":60600,"beamDamp":12},
-        {"beamDeform":1620,"beamStrength":3600},
-        {"disableMeshBreaking":true,"disableTriangleBreaking":true},
-        {"deformLimitExpansion":""},
-		{"name":"fueltank"},
-        {"breakGroupType":1},
-        {"breakGroup":"fueltank"},
-
-		["ft1", "ft1l"],
-		["ft1", "ft1r"],
-		
-		["ft2", "ft2l"],
-		["ft2", "ft2r"],
-		
-		["ft3", "ft3l"],
-		["ft3", "ft3r"],
-		
-		["ft4", "ft4l"],
-		["ft4", "ft4r"],
-		
-		["ft1", "ft2"],
-		["ft1l", "ft2l"],
-		["ft1r", "ft2r"],
-		
-		["ft3", "ft4"],
-		["ft3l", "ft4l"],
-		["ft3r", "ft4r"],
-		
-		["ft1", "ft3"],
-		["ft1l", "ft3l"],
-		["ft1r", "ft3r"],
-		
-		["ft2", "ft4"],
-		["ft2l", "ft4l"],
-		["ft2r", "ft4r"],
-		
-		["ft1", "ft4"],
-		["ft1l", "ft4l"],
-		["ft1r", "ft4r"],
-		
-		["ft2", "ft3"],
-		["ft2l", "ft3l"],
-		["ft2r", "ft3r"],
-		
-		["ft1", "ft3l"],
-		["ft1", "ft3r"],
-		
-		["ft2", "ft4l"],
-		["ft2", "ft4r"],
-		
-		["ft1", "ft2l"],
-		["ft1", "ft2r"],
-		
-		["ft3", "ft4l"],
-		["ft3", "ft4r"],
-
-        {"breakGroup":""},
-        {"disableMeshBreaking":false,"disableTriangleBreaking":false},
-		{"beamSpring":160600,"beamDamp":80},
-        {"beamDeform":13000,"beamStrength":40000},
-		["ft1r", "n3"],
-		["ft2r", "n3"],
-		["ft3r", "n3"],
-		["ft4r", "n3"],
-		
-		["ft1l", "n4"],
-		["ft2l", "n4"],
-		["ft3l", "n4"],
-		["ft4l", "n4"],
-		
-		["ft1r", "nr"],
-		["ft2r", "nr"],
-		["ft3r", "nr"],
-		["ft4r", "nr"],
-		
-		["ft1l", "nl"],
-		["ft2l", "nl"],
-		["ft3l", "nl"],
-		["ft4l", "nl"],
-		
-		["ft1", "axleRL2"],
-		["ft2", "axleRL2"],
-		["ft3", "axleRL2"],
-		["ft4", "axleRL2"],
-		["ft1", "axleRR2"],
-		["ft2", "axleRR2"],
-		["ft3", "axleRR2"],
-		["ft4", "axleRR2"],
-    ],
-}
-
-"tutorial_safe_fueltank":{
-	"information":{
-		"authors": "MorzBNG",
-		"name": "Safe Fuel Tank",
-		"value": 500
-	},
-
-	"slotType":"tutorial_fueltank",
-
-	"variables": [
-        ["name", "type", "unit", "category", "default", "min", "max", "title", "description"],
-        ["$fuel", "range", "L", "Chassis", 63, 0, 63, "Fuel Volume", "Initial fuel volume", {"stepDis":0.5}],
-    ],
-	
-	"energyStorage":[
-		["type", "name"]
-		["fuelTank", "mainTank"],
-	],
-	
-	"mainTank":{
-		"energyType" : "gasoline",
-		"fuelCapacity" : 63,
-		"startingFuelCapacity": "$fuel",
-		"fuel": {"[engineGroup]":["fuel"]},
-		"breakTriggerBeam":"fueltank",
-	}
-
-	"nodes": [
-        ["id", "posX", "posY", "posZ"],
-        //fuel tank particles
-        {"frictionCoef":1},
-        {"collision":true},
-        {"selfCollision":true},
-        {"group":""},
-        {"nodeWeight":2},
-        {"engineGroup":["fuel"]},
-        {"nodeMaterial":"|NM_PLASTIC"},
-        {"chemEnergy":50,"burnRate":1.2,"flashPoint":250,"vaporPoint":97,"specHeat":0.1,"selfIgnitionCoef":0,"smokePoint":290,"containerBeam":"fueltank"},
-		["ft1", 0, 1.02, 0.4],
-        ["ft1l", 0.31, 1.02, 0.4],
-        ["ft1r", -0.31, 1.02, 0.4],
-        ["ft2", 0, 1.02, 0.5],
-        ["ft2l", 0.31, 1.02, 0.5],
-        ["ft2r", -0.31, 1.02, 0.5],
-		["ft3", 0, 0.7, 0.4],
-        ["ft3l", 0.31, 0.7, 0.4],
-        ["ft3r", -0.31, 0.7, 0.4],
-		["ft4", 0, 0.7, 0.5],
-        ["ft4l", 0.31, 0.7, 0.5],
-        ["ft4r", -0.31, 0.7, 0.5],
-		{"selfIgnitionCoef":false,"selfCollision":false},
-        {"chemEnergy":false,"burnRate":false,"flashPoint":false,"vaporPoint":false,"specHeat":false,"selfIgnitionCoef":false,"smokePoint":false,"containerBeam":false},
-        {"engineGroup":""},
-    ],
-	
-	
-    "beams": [
-        ["id1:", "id2:"],
-        {"beamPrecompression":1, "beamType":"|NORMAL", "beamLongBound":1, "beamShortBound":1},
-        {"beamSpring":60600,"beamDamp":12},
-        {"beamDeform":1620,"beamStrength":3600},
-        {"disableMeshBreaking":true,"disableTriangleBreaking":true},
-        {"deformLimitExpansion":""},
-		{"name":"fueltank"},
-        {"breakGroupType":1},
-        {"breakGroup":"fueltank"},
-
-		["ft1", "ft1l"],
-		["ft1", "ft1r"],
-		
-		["ft2", "ft2l"],
-		["ft2", "ft2r"],
-		
-		["ft3", "ft3l"],
-		["ft3", "ft3r"],
-		
-		["ft4", "ft4l"],
-		["ft4", "ft4r"],
-		
-		["ft1", "ft2"],
-		["ft1l", "ft2l"],
-		["ft1r", "ft2r"],
-		
-		["ft3", "ft4"],
-		["ft3l", "ft4l"],
-		["ft3r", "ft4r"],
-		
-		["ft1", "ft3"],
-		["ft1l", "ft3l"],
-		["ft1r", "ft3r"],
-		
-		["ft2", "ft4"],
-		["ft2l", "ft4l"],
-		["ft2r", "ft4r"],
-		
-		["ft1", "ft4"],
-		["ft1l", "ft4l"],
-		["ft1r", "ft4r"],
-		
-		["ft2", "ft3"],
-		["ft2l", "ft3l"],
-		["ft2r", "ft3r"],
-		
-		["ft1", "ft3l"],
-		["ft1", "ft3r"],
-		
-		["ft2", "ft4l"],
-		["ft2", "ft4r"],
-		
-		["ft1", "ft2l"],
-		["ft1", "ft2r"],
-		
-		["ft3", "ft4l"],
-		["ft3", "ft4r"],
-
-        {"breakGroup":""},
-        {"disableMeshBreaking":false,"disableTriangleBreaking":false},
-		{"beamSpring":160600,"beamDamp":80},
-        {"beamDeform":13000,"beamStrength":40000},
-		["ft1r", "n3"],
-		["ft2r", "n3"],
-		["ft3r", "n3"],
-		["ft4r", "n3"],
-		
-		["ft1l", "n4"],
-		["ft2l", "n4"],
-		["ft3l", "n4"],
-		["ft4l", "n4"],
-		
-		["ft1r", "nr"],
-		["ft2r", "nr"],
-		["ft3r", "nr"],
-		["ft4r", "nr"],
-		
-		["ft1l", "nl"],
-		["ft2l", "nl"],
-		["ft3l", "nl"],
-		["ft4l", "nl"],
-		
-		["ft1", "axleRL2"],
-		["ft2", "axleRL2"],
-		["ft3", "axleRL2"],
-		["ft4", "axleRL2"],
-		["ft1", "axleRR2"],
-		["ft2", "axleRR2"],
-		["ft3", "axleRR2"],
-		["ft4", "axleRR2"],
+		{"beamSpring":2500600,"beamDamp":180},
+        {"beamDeform":48000,"beamStrength":"FLT_MAX"},
+		["ft1l", "f4l"],
+		["ft1", "f4l"],
+		["ft1", "f4r"],
+		["ft1r", "f4r"],
+		["ft3l", "f3l"],
+		["ft3", "f3l"],
+		["ft3", "f3r"],
+		["ft3r", "f3r"],
+		["ft3l", "f4l"],
+		["ft3", "f4l"],
+		["ft3", "f4r"],
+		["ft3r", "f4r"],
+		["ft4l", "f8l"],
+		["ft4", "f8l"],
+		["ft4", "f8r"],
+		["ft4r", "f8r"],
+		["ft4l", "f9l"],
+		["ft4", "f9l"],
+		["ft4", "f9r"],
+		["ft4r", "f9r"],
+		["ft2l", "f9l"],
+		["ft2", "f9l"],
+		["ft2", "f9r"],
+		["ft2r", "f9r"],
     ],
 }
 }

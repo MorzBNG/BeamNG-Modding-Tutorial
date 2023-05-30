@@ -1,0 +1,113 @@
+{
+"tutorial_dse": {
+    "information":{
+        "authors":"MorzBNG",
+        "name":"Driving & Safety Electronics",
+    },
+	
+    "slotType" : "tutorial_dse",
+
+    "slots": [
+        ["type", "default", "description"],
+		["tutorial_dse_abs","tutorial_dse_abs", "Anti-Lock Braking System"],
+		["tutorial_dse_esc_tc","", "ESC & TC"],
+    ],
+},
+
+"tutorial_dse_abs": {
+    "information":{
+        "authors":"MorzBNG",
+        "name":"Anti-Lock Braking System",
+        "value":250
+    },
+	
+    "slotType":"tutorial_dse_abs",
+	
+	"pressureWheels":[
+		["name","hubGroup","group","node1:","node2:","nodeS","nodeArm:","wheelDir"],
+		{"enableABS":true}
+	]
+},
+
+"tutorial_dse_esc_tc":{
+	"information":{
+        "authors":"MorzBNG",
+        "name":"Standard ESC & TC",
+        "value":320
+    },
+	
+	"slotType":"tutorial_dse_esc_tc",
+	
+	"controller": [
+        ["fileName"],
+        ["esc"],
+    ],
+	
+    "esc": {
+        "actionedWheels": ["FL", "FR", "RR", "RL"],
+        "isDebugMode": 0,
+        "defaultConfig": 1,
+        "configurations": {
+		"Regular ESC":{
+			//ESC
+			"escEnabled": true,
+			"escConfigurationEnabled": true,
+			"order":1,
+			"activeColor":"98FB00",
+			
+			"maxSideAcceleration":10,
+			"brakeForceMultiplier":1,
+			"escThreshold":0.15,
+			"characteristicSpeed":-1,
+			"proportionalFactor": 1.2,
+			"integralFactor": 2.2,
+			"maxIntegralPart": 5.5,
+			"skewStiffnessFront":158800,
+			"skewStiffnessRear":173500,
+			"desiredYawRateSmoothing":550,
+			//TCS
+			"slipThreshold": 0.14,
+			"minThrottleFactor": 0.2,
+			"maxBrakingFactor": 0.6,
+			"throttleProportionalFactor": 1.8,
+			"throttleIntegralFactor": 1,
+			"brakingProportionalFactor": 1,
+			"brakingIntegralFactor": 1,
+			"brakeThrottleSwitchThreshold": 40,
+		},
+		"Sport ESC":{
+			//ESC
+			"escEnabled": true,
+			"escConfigurationEnabled": true,
+			"order":2,
+			"activeColor":"3096F1",
+			
+			"maxSideAcceleration":12,
+			"brakeForceMultiplier":1,
+			"escThreshold":0.2,
+			"characteristicSpeed":-1,
+			"proportionalFactor": 0.85,
+			"integralFactor": 1.8,
+			"maxIntegralPart": 3.0,
+			"skewStiffnessFront":158800,
+			"skewStiffnessRear":173500,
+			"desiredYawRateSmoothing":550,
+			//TCS
+			"slipThreshold": 0.22,
+			"minThrottleFactor": 0.3,
+			"maxBrakingFactor": 0.4,
+			"brakeThrottleSwitchThreshold": 40,
+		},
+		"ESC Off":{
+			//ESC
+			"escEnabled": false,
+			"escConfigurationEnabled": true,
+			"order":3,
+			//UI
+			"overrideESCPulse": 1,
+			"overrideTCSPulse": 1,
+		}
+        }
+    },
+}
+}
